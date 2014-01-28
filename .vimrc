@@ -25,7 +25,11 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'jshint.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'surround.vim'
-Bundle 'ZenCoding.vim'
+Bundle 'mattn/emmet-vim'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'Syntastic'
+Bundle 'ctrlp.vim'
+Bundle 'ap/vim-css-color'
 
 filetype plugin indent on
 
@@ -69,8 +73,8 @@ filetype plugin indent on
 nmap <tab> v>
 nmap <s-tab> v<
 nmap <silent> <leader>t :TlistToggle<CR>
-nmap <silent> <leader>c :tabnew ~/.vimrc<CR>
 nmap <Space> i<Space>
+nmap <silent> <leader>c :CoffeeMake<CR>
 "    Map F2 to reload this file
 nmap <F2> :source %<CR>
 nmap ; :
@@ -117,6 +121,10 @@ vmap <s-tab> <gv
 "     let g:snip_end_tag="≯" .. special char in dig !>
 " }}}
 
+" Emmet setting {{{
+imap <c-e> <c-y>,
+" }}}
+
 " EJ command{{{
 " Ht maps to help <args> in tab page
 command! -nargs=1 HT :tab help <args>
@@ -132,6 +140,8 @@ command! SUDO w !sudo tee % > /dev/null
 " au BufRead,BufNewFile *.scss set filetype=scss sw=2 ts=2 sts=2
 au BufRead,BufNewFile *.less set ft=less
 au BufRead,BufNewFile *.twig set ft=htmldjango
+au BufRead,BufNewFile *.ejs set ft=html
+au BufRead,BufNewFile *.coffee set shiftwidth=2 softtabstop=2 tabstop=2
 " au BufWritePost,FileWritePost *.js :JSHint
 " au BufWritePost,FileWritePost *.coffee :CoffeeLint | cwindow
 " }}}
