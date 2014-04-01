@@ -15,21 +15,27 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'Kris2k/matchit'
-Bundle 'snipMate'
+" Not sure what's going on
+" Bundle 'snipMate'
 Bundle 'ervandew/supertab'
 Bundle 'thinca/vim-template'
 Bundle 'simplecommenter'
 Bundle 'groenewege/vim-less'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'jshint.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'surround.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'derekwyatt/vim-scala'
-Bundle 'Syntastic'
+" Bundle 'Syntastic'
 Bundle 'ctrlp.vim'
 Bundle 'ap/vim-css-color'
+Bundle 'heavenshell/vim-jsdoc'
+" Bundle 'Shutnik/jshint2.vim'
+Bundle 'jshint.vim'
+Bundle 'suan/vim-instant-markdown'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'rking/ag.vim'
 
 filetype plugin indent on
 
@@ -142,6 +148,7 @@ au BufRead,BufNewFile *.less set ft=less
 au BufRead,BufNewFile *.twig set ft=htmldjango
 au BufRead,BufNewFile *.ejs set ft=html
 au BufRead,BufNewFile *.coffee set shiftwidth=2 softtabstop=2 tabstop=2
+au BufRead,BufNewFile * :IndentGuidesEnable
 " au BufWritePost,FileWritePost *.js :JSHint
 " au BufWritePost,FileWritePost *.coffee :CoffeeLint | cwindow
 " }}}
@@ -168,9 +175,9 @@ set autoindent
 
 " Tab settings
 set expandtab " 強制把 tab 轉為 空白
-set shiftwidth=4 " 設定 tab 的寬
-set tabstop=4 " tab 視為 {n} 個空白
-set softtabstop=4 " 搭配 expandtab 使用 {n} 個空白視為一個 tab 然後刪除
+set shiftwidth=2 " 設定 tab 的寬
+set tabstop=2 " tab 視為 {n} 個空白
+set softtabstop=2 " 搭配 expandtab 使用 {n} 個空白視為一個 tab 然後刪除
 
 set showcmd
 set showmode
@@ -178,6 +185,7 @@ set ruler
 set sj=2
 set so=6
 set foldcolumn=2
+set colorcolumn=80
 set nu
 set modeline
 " Highlight the search result
@@ -193,6 +201,14 @@ set wildmode=longest,list
 
 " coffeescript additionl setting {{{
 " au! Filetype coffee :set sw=2 ts=2 sts=2
+" }}}
+
+" ctrlp settings {{{
+let g:ctrlp_max_files=50000
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+	\ 'file': '\v\.(exe|so|dll|swp|tar|zip|png|jpg|jpeg)$'
+	\ }
 " }}}
 
 " Personnal fold{{{
@@ -238,6 +254,7 @@ else
     set background=dark
     colorscheme koehler
     hi Folded guifg=white guibg=#222222
+    hi colorcolumn guibg=#66B3FF
 endif
 
 " deprecated {{{
