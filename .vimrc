@@ -36,6 +36,7 @@ Bundle 'jshint.vim'
 Bundle 'suan/vim-instant-markdown'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'rking/ag.vim'
+Bundle 'vim-stylus'
 
 filetype plugin indent on
 
@@ -84,8 +85,10 @@ nmap <silent> <leader>c :CoffeeMake<CR>
 "    Map F2 to reload this file
 nmap <F2> :source %<CR>
 nmap ; :
-nmap <silent> T :NERDTree<CR>
+nmap <silent> T :NERDTreeFind<CR>
 nmap <silent> time :read !date<CR>kddo
+nmap \q :q<CR>
+nmap wq :wq<CR>
 
 " for FuzzyFinder
 nmap ff :FufFile<CR>
@@ -125,6 +128,12 @@ vmap <s-tab> <gv
 "     set runtimepath+=~/.vim/textmateOnly/after
 "     let g:snip_start_tag="≮" .. special char in dig !<
 "     let g:snip_end_tag="≯" .. special char in dig !>
+" }}}
+
+" Supertab Setting {{{
+" Supertab now can support two differnt mappings
+" let g:SuperTabDefaultCompletionType = "context"
+" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 " }}}
 
 " Emmet setting {{{
@@ -206,8 +215,8 @@ set wildmode=longest,list
 " ctrlp settings {{{
 let g:ctrlp_max_files=50000
 let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-	\ 'file': '\v\.(exe|so|dll|swp|tar|zip|png|jpg|jpeg)$'
+	\ 'dir':  '\v[\/]\.(git|hg|svn)$|xulrunner-sdk-*|node_modules',
+	\ 'file': '\v\.(exe|so|dll|swp|tar|zip|png|jpg|jpeg|gif|bmp|png)$'
 	\ }
 " }}}
 
