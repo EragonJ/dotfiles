@@ -12,6 +12,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'Kris2k/matchit'
@@ -85,7 +86,7 @@ nmap <silent> <leader>c :CoffeeMake<CR>
 "    Map F2 to reload this file
 nmap <F2> :source %<CR>
 nmap ; :
-nmap <silent> T :NERDTreeFind<CR>
+nmap <silent> T :NERDTreeToggle<CR>
 nmap <silent> time :read !date<CR>kddo
 nmap \q :q<CR>
 nmap wq :wq<CR>
@@ -212,12 +213,21 @@ set wildmode=longest,list
 " au! Filetype coffee :set sw=2 ts=2 sts=2
 " }}}
 
+" NerdTree settings {{{
+let g:nerdtree_tabs_open_on_gui_startup=0
+let g:nerdtree_tabs_open_on_new_tab=0
+" }}}
+
 " ctrlp settings {{{
 let g:ctrlp_max_files=50000
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/]\.(git|hg|svn)$|xulrunner-sdk-*|node_modules',
 	\ 'file': '\v\.(exe|so|dll|swp|tar|zip|png|jpg|jpeg|gif|bmp|png)$'
 	\ }
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("e")': [],
+  \ 'AcceptSelection("t")': ['<cr>', '<c-t>'],
+  \ }
 " }}}
 
 " Personnal fold{{{
