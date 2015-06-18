@@ -1,12 +1,12 @@
 " vim:fdm=marker
- 
+
 " Info {{{
 "    EragonJ ( eragonj@eragonj.me )
 "    http://eragonj.me
 " }}}
 
 set nocompatible
-filetype off  
+filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -18,7 +18,7 @@ Bundle 'FuzzyFinder'
 Bundle 'Kris2k/matchit'
 " Not sure what's going on
 " Bundle 'snipMate'
-Bundle 'ervandew/supertab'
+" Bundle 'ervandew/supertab'
 Bundle 'thinca/vim-template'
 Bundle 'simplecommenter'
 Bundle 'groenewege/vim-less'
@@ -34,47 +34,18 @@ Bundle 'ap/vim-css-color'
 Bundle 'heavenshell/vim-jsdoc'
 " Bundle 'Shutnik/jshint2.vim'
 Bundle 'jshint.vim'
-Bundle 'suan/vim-instant-markdown'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'rking/ag.vim'
 Bundle 'vim-stylus'
+Bundle 'rizzatti/dash.vim'
+Bundle 'marijnh/tern_for_vim'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'shime/vim-livedown'
+Bundle 'mxw/vim-jsx'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'Lokaltog/vim-easymotion'
 
 filetype plugin indent on
-
-" Basis {{{
-"    x  delete character under the cursor (short for "dl")
-"    X  delete character before the cursor (short for "dh")
-"    D  delete from cursor to end of line (short for "d$")
-"    dw delete from cursor to next start of word
-"    db delete from cursor to previous start of word
-"    diw                delete word under the cursor (excluding white space)
-"    daw                delete word under the cursor (including white space)
-"    dG delete until the end of the file
-" }}}
-
-" Color Table{{{
-"    NR-16   NR-8    COLOR NAME ~
-"    0       0       Black
-"    1       4       DarkBlue
-"    2       2       DarkGreen
-"    3       6       DarkCyan
-"    4       1       DarkRed
-"    5       5       DarkMagenta
-"    6       3       Brown, DarkYellow
-"    7       7       LightGray, LightGrey, Gray, Grey
-"    8       0*      DarkGray, DarkGrey
-"    9       4*      Blue, LightBlue
-"    10      2*      Green, LightGreen
-"    11      6*      Cyan, LightCyan
-"    12      1*      Red, LightRed
-"    13      5*      Magenta, LightMagenta
-"    14      3*      Yellow, LightYellow
-"    15      7*      White
-" }}}
-
-" Insert mapping {{{
-
-" }}}
 
 " Normal mapping{{{
 "    <leader> is '\'
@@ -87,12 +58,13 @@ nmap <silent> <leader>c :CoffeeMake<CR>
 nmap <F2> :source %<CR>
 nmap ; :
 nmap <silent> T :NERDTreeToggle<CR>
-nmap <silent> time :read !date<CR>kddo
+nmap <silent> t :NERDTreeFind<CR>
 nmap \q :q<CR>
 nmap wq :wq<CR>
 
 " for FuzzyFinder
 nmap ff :FufFile<CR>
+nmap fc :FufCoverageFile<CR>
 nmap fcd :FufDir<CR>
 
 "    It is important for commands that can make them auto-complete
@@ -106,7 +78,7 @@ nmap fcd :FufDir<CR>
 
 " Visual mapping {{{
 "     <tab> ... conflict with slippery Snippet
-vmap <tab> >gv 
+vmap <tab> >gv
 vmap <s-tab> <gv
 " }}}
 
@@ -137,8 +109,28 @@ vmap <s-tab> <gv
 " let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 " }}}
 
+" Easymotion {{{
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_smartsign_us = 1
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+" }}}
+
 " Emmet setting {{{
 imap <c-e> <c-y>,
+" }}}
+
+" vim-livedown {{{
+" should markdown preview get shown automatically upon opening markdown buffer
+let g:livedown_autorun = 1
+
+" should the browser window pop-up upon previewing
+let g:livedown_open = 1
+
+" the port on which Livedown server will run
+let g:livedown_port = 1337
 " }}}
 
 " EJ command{{{
@@ -146,7 +138,7 @@ imap <c-e> <c-y>,
 command! -nargs=1 HT :tab help <args>
 
 " SUDO can help me save files when permission is not granted
-command! SUDO w !sudo tee % > /dev/null 
+command! SUDO w !sudo tee % > /dev/null
 " }}}
 
 " EJ autocmd{{{
@@ -199,10 +191,10 @@ set colorcolumn=80
 set nu
 set modeline
 " Highlight the search result
-set hlsearch
-set incsearch 
+set nohlsearch " With easymotion, we don't need this search highlight
+set incsearch
 set ignorecase " Make search ignorecase ( noignorecase instead )
-" Complete longest common string, then each full match 
+" Complete longest common string, then each full match
 set wildmode=longest,list
 " }}}
 
@@ -218,24 +210,45 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 let g:nerdtree_tabs_open_on_new_tab=0
 " }}}
 
-" ctrlp settings {{{
-let g:ctrlp_max_files=50000
-let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn)$|xulrunner-sdk-*|node_modules',
-	\ 'file': '\v\.(exe|so|dll|swp|tar|zip|png|jpg|jpeg|gif|bmp|png)$'
-	\ }
-let g:ctrlp_prompt_mappings = {
-  \ 'AcceptSelection("e")': [],
-  \ 'AcceptSelection("t")': ['<cr>', '<c-t>'],
+" YCM settings {{{
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_complete_in_comments = 1
+" let g:ycm_complete_in_strings = 0
+let g:ycm_filetype_blacklist = {
+  \ 'gitcomit' : 1,
   \ }
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_min_num_of_chars_for_completion = 99
+" }}}
+
+" ctrlp settings {{{
+" Let's use ag, and this would be super-fast !
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+" }}}
+
+" fuzzy finder settings {{{
+let g:fuf_file_exclude = '\v\.(exe|so|dll|swp|tar|zip|png|jpg|jpeg|gif|bmp|png)$'
+let g:fuf_dir_exclude = '\v[\/]\.(git|hg|svn)$|xulrunner-sdk-*|node_modules'
+let g:fuf_coveragefile_exclude = '\v\~$|(^|[/\\])(bower_componenets|b2g|build_stage|test_media)($|[/\\])|\.(o|exe|dll|bak|orig|swp|jpg|jpeg|gif|bmp|png)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+" }}}
+
+" Ag settings {{{
+let g:agprg = "ag --column -i"
+" }}}
+
+" JSX settings {{
 " }}}
 
 " Personnal fold{{{
-" function! JavaScriptFold() 
+" function! JavaScriptFold()
 "     setl foldmethod=syntax
 "     setl foldlevelstart=1
 "     syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-" 
+"
 "     function! FoldText()
 "         return substitute(getline(v:foldstart), '{.*', '{...}', '')
 "     endfunction
@@ -243,25 +256,25 @@ let g:ctrlp_prompt_mappings = {
 " endfunction
 " au FileType javascript call JavaScriptFold()
 " au FileType javascript setl fen
-" }}} 
+" }}}
 
-if ! has('gui') 
+if ! has('gui')
     set t_Co=16
     hi Comment ctermfg=10 ctermbg=black
     hi IncSearch ctermfg=black ctermbg=darkgreen
     hi Search ctermfg=black ctermbg=darkgreen
     hi SpecialKey ctermfg=10
- 
+
     hi FoldColumn ctermbg=black ctermfg=green
-    hi LineNr ctermbg=black ctermfg=green 
+    hi LineNr ctermbg=black ctermfg=green
     hi Folded ctermbg=darkgreen ctermfg=black
- 
+
     hi TabLineFill term=reverse ctermfg=white
     hi TabLine ctermfg=darkgreen ctermbg=black
     hi TabLineSel ctermbg=darkgreen ctermfg=black
     hi Cursor ctermbg=darkgreen
     hi VertSplit ctermbg=black ctermfg=black
- 
+
     hi StatusLine ctermfg=darkgreen
     hi StatusLineNC ctermfg=black ctermbg=darkgreen
     hi Visual ctermbg=green ctermfg=black
@@ -279,9 +292,9 @@ endif
 " deprecated {{{
 
 " function! TAB()
-"     set et sts=4 st=4 ts=4 
+"     set et sts=4 st=4 ts=4
 " endfunction
-" 
+"
 " fun! Retab()
 "     set list
 "     set listchars=tab:>-,eol:$
@@ -296,4 +309,3 @@ endif
 " com! Retab4 :cal Retab()
 
 " }}}
-
