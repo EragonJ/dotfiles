@@ -44,6 +44,8 @@ Bundle 'shime/vim-livedown'
 Bundle 'mxw/vim-jsx'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'junkblocker/patchreview-vim'
+Bundle 'codegram/vim-codereview'
 
 filetype plugin indent on
 
@@ -150,6 +152,7 @@ au BufRead,BufNewFile *.less set ft=less
 au BufRead,BufNewFile *.twig set ft=htmldjango
 au BufRead,BufNewFile *.ejs set ft=html
 au BufRead,BufNewFile *.coffee set shiftwidth=2 softtabstop=2 tabstop=2
+au Bufread,BufNewFile *.js.es6 set ft=javascript
 au BufRead,BufNewFile * :IndentGuidesEnable
 " au BufWritePost,FileWritePost *.js :JSHint
 " au BufWritePost,FileWritePost *.coffee :CoffeeLint | cwindow
