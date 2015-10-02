@@ -29,7 +29,7 @@ Bundle 'surround.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'derekwyatt/vim-scala'
 " Bundle 'Syntastic'
-Bundle 'ctrlp.vim'
+" Bundle 'ctrlp.vim'
 Bundle 'ap/vim-css-color'
 Bundle 'heavenshell/vim-jsdoc'
 " Bundle 'Shutnik/jshint2.vim'
@@ -46,6 +46,10 @@ Bundle 'jiangmiao/auto-pairs'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'junkblocker/patchreview-vim'
 Bundle 'codegram/vim-codereview'
+Bundle 'ctrlpvim/ctrlp.vim'
+Bundle 'Chiel92/vim-autoformat'
+Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-fugitive'
 
 filetype plugin indent on
 
@@ -211,6 +215,28 @@ set wildmode=longest,list
 " NerdTree settings {{{
 let g:nerdtree_tabs_open_on_gui_startup=0
 let g:nerdtree_tabs_open_on_new_tab=0
+" NERDTress File highlighting
+
+" airline settings {{{
+set laststatus=2
+" }}}
+
+" function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+"  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+"  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+" endfunction
+" 
+" call NERDTreeHighlightFile('jade', 'green', 'none', 'yellow', '#151515')
+" call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+" call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+" call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+" call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+" call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+" call NERDTreeHighlightFile('styl', 'cyan', 'none', 'yellow', '#151515')
+" call NERDTreeHighlightFile('css', 'cyan', 'none', 'yellow', '#151515')
+" call NERDTreeHighlightFile('coffee', 'Red', 'none', 'yellow', '#151515')
+" call NERDTreeHighlightFile('js', 'Red', 'none', 'yellow', '#151515')
+" call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 " }}}
 
 " YCM settings {{{
