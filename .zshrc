@@ -46,3 +46,6 @@ source $ZSH/oh-my-zsh.sh
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# added by travis gem
+[ -f /Users/EragonJ/.travis/travis.sh ] && source /Users/EragonJ/.travis/travis.sh

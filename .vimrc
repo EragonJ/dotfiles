@@ -157,6 +157,7 @@ au BufRead,BufNewFile *.twig set ft=htmldjango
 au BufRead,BufNewFile *.ejs set ft=html
 au BufRead,BufNewFile *.coffee set shiftwidth=2 softtabstop=2 tabstop=2
 au Bufread,BufNewFile *.js.es6 set ft=javascript
+au Bufread,BufNewFile *.md set ft=markdown
 au BufRead,BufNewFile * :IndentGuidesEnable
 " au BufWritePost,FileWritePost *.js :JSHint
 " au BufWritePost,FileWritePost *.coffee :CoffeeLint | cwindow
