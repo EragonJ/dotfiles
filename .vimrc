@@ -42,7 +42,7 @@ Bundle 'marijnh/tern_for_vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'shime/vim-livedown'
 Bundle 'mxw/vim-jsx'
-Bundle 'jiangmiao/auto-pairs'
+Bundle 'Raimondi/delimitMate'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'junkblocker/patchreview-vim'
 Bundle 'codegram/vim-codereview'
@@ -50,6 +50,8 @@ Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'Chiel92/vim-autoformat'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
+Bundle 'mbbill/undotree'
+Bundle 'wakatime/vim-wakatime'
 
 filetype plugin indent on
 
@@ -62,6 +64,7 @@ nmap <Space> i<Space>
 nmap <silent> <leader>c :CoffeeMake<CR>
 "    Map F2 to reload this file
 nmap <F2> :source %<CR>
+nmap <F5> :UndotreeToggle<CR>
 nmap ; :
 nmap <silent> T :NERDTreeToggle<CR>
 nmap <silent> t :NERDTreeFind<CR>
