@@ -34,7 +34,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git coffee brew github git-extras grunt npm node zsh-syntax-highlighting frontend-search)
+plugins=(git coffee brew github git-extras grunt npm node zsh-syntax-highlighting frontend-search zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -52,3 +52,4 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 export NVM_DIR="/Users/EragonJ/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
