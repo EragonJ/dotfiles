@@ -7,52 +7,47 @@
 
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-Bundle 'Kris2k/matchit'
-" Not sure what's going on
-" Bundle 'snipMate'
-" Bundle 'ervandew/supertab'
-Bundle 'thinca/vim-template'
-Bundle 'simplecommenter'
-Bundle 'groenewege/vim-less'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'mileszs/ack.vim'
-Bundle 'surround.vim'
-Bundle 'mattn/emmet-vim'
-Bundle 'derekwyatt/vim-scala'
-" Bundle 'Syntastic'
-" Bundle 'ctrlp.vim'
-Bundle 'ap/vim-css-color'
-Bundle 'heavenshell/vim-jsdoc'
-" Bundle 'Shutnik/jshint2.vim'
-Bundle 'jshint.vim'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'rking/ag.vim'
-Bundle 'vim-stylus'
-Bundle 'rizzatti/dash.vim'
-Bundle 'marijnh/tern_for_vim'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'shime/vim-livedown'
-Bundle 'mxw/vim-jsx'
-Bundle 'Raimondi/delimitMate'
-Bundle 'easymotion/vim-easymotion'
-Bundle 'junkblocker/patchreview-vim'
-Bundle 'codegram/vim-codereview'
-Bundle 'ctrlpvim/ctrlp.vim'
-Bundle 'Chiel92/vim-autoformat'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'mbbill/undotree'
-Bundle 'wakatime/vim-wakatime'
+Plugin 'gmarik/vundle'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
+Plugin 'Kris2k/matchit'
+Plugin 'thinca/vim-template'
+Plugin 'simplecommenter'
+Plugin 'groenewege/vim-less'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mileszs/ack.vim'
+Plugin 'surround.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'ap/vim-css-color'
+Plugin 'heavenshell/vim-jsdoc'
+Plugin 'jshint.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'rking/ag.vim'
+Plugin 'vim-stylus'
+Plugin 'rizzatti/dash.vim'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'shime/vim-livedown'
+Plugin 'mxw/vim-jsx'
+Plugin 'Raimondi/delimitMate'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'junkblocker/patchreview-vim'
+Plugin 'codegram/vim-codereview'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'mbbill/undotree'
+Plugin 'wakatime/vim-wakatime'
 
+call vundle#end()
 filetype plugin indent on
 
 " Normal mapping{{{
@@ -260,6 +255,7 @@ let g:ycm_filetype_blacklist = {
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 endif
 " }}}
 
