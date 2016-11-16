@@ -5,12 +5,15 @@
 "    http://eragonj.me
 " }}}
 
+set shell=bash\ -i "for vim-instant-markdown
+
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
+
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'L9'
@@ -34,7 +37,6 @@ Plugin 'vim-stylus'
 Plugin 'rizzatti/dash.vim'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'shime/vim-livedown'
 Plugin 'mxw/vim-jsx'
 Plugin 'Raimondi/delimitMate'
 Plugin 'easymotion/vim-easymotion'
@@ -46,6 +48,7 @@ Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mbbill/undotree'
 Plugin 'wakatime/vim-wakatime'
+Plugin 'suan/vim-instant-markdown'
 
 call vundle#end()
 filetype plugin indent on
@@ -199,7 +202,7 @@ set modeline
 " Highlight the search result
 set nohlsearch " With easymotion, we don't need this search highlight
 set incsearch
-set ignorecase " Make search ignorecase ( noignorecase instead )
+set noignorecase " Need this to work with easy-motion
 " Complete longest common string, then each full match
 set wildmode=longest,list
 " }}}
