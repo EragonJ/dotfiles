@@ -29,15 +29,13 @@ Plugin 'surround.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'ap/vim-css-color'
-Plugin 'heavenshell/vim-jsdoc'
 Plugin 'jshint.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'rking/ag.vim'
 Plugin 'vim-stylus'
 Plugin 'rizzatti/dash.vim'
-Plugin 'marijnh/tern_for_vim'
+"Plugin 'marijnh/tern_for_vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'mxw/vim-jsx'
 Plugin 'Raimondi/delimitMate'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'junkblocker/patchreview-vim'
@@ -49,6 +47,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'mbbill/undotree'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'suan/vim-instant-markdown'
+Plugin 'pangloss/vim-javascript'
 
 call vundle#end()
 filetype plugin indent on
@@ -270,9 +269,6 @@ let g:fuf_coveragefile_exclude = '\v\~$|(^|[/\\])(bower_componenets|b2g|build_st
 
 " Ag settings {{{
 let g:agprg = "ag --column -i"
-" }}}
-
-" JSX settings {{
 " }}}
 
 " Personnal fold{{{
