@@ -34,7 +34,6 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'rking/ag.vim'
 Plugin 'vim-stylus'
 Plugin 'rizzatti/dash.vim'
-"Plugin 'marijnh/tern_for_vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Raimondi/delimitMate'
 Plugin 'easymotion/vim-easymotion'
@@ -145,6 +144,9 @@ command! -nargs=1 HT :tab help <args>
 
 " SUDO can help me save files when permission is not granted
 command! SUDO w !sudo tee % > /dev/null
+
+command! -nargs=0 WriteWrite :w
+cnoreabbrev ww WriteWrite
 " }}}
 
 " EJ autocmd{{{
