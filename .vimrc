@@ -18,7 +18,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
-Plugin 'Kris2k/matchit'
 Plugin 'thinca/vim-template'
 Plugin 'simplecommenter'
 Plugin 'groenewege/vim-less'
@@ -47,6 +46,8 @@ Plugin 'mbbill/undotree'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'matchit.zip'
 
 call vundle#end()
 filetype plugin indent on
