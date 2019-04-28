@@ -48,6 +48,7 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'matchit.zip'
+Plugin 'posva/vim-vue'
 
 call vundle#end()
 filetype plugin indent on
@@ -73,46 +74,10 @@ nmap ff :FufFile<CR>
 nmap fc :FufCoverageFile<CR>
 nmap fcd :FufDir<CR>
 
-"    It is important for commands that can make them auto-complete
-"    Ctrl-L means it can find the longest match and show up
-"    Ctrl-D means it can find list all possibilities to the programmer
-" cmap <Tab> <c-L><c-D>
-" }}}
-
-" Insert mapping {{{
-" }}}
-
 " Visual mapping {{{
 "     <tab> ... conflict with slippery Snippet
 vmap <tab> >gv
 vmap <s-tab> <gv
-" }}}
-
-" Insert mapping {{{
-" inoremap {     {}<Left>
-" inoremap {<CR> {<CR>}<Esc>O
-" inoremap {}    {}
-" inoremap (     ()<Left>
-" inoremap (<CR> (<CR>)<Esc>O
-" inoremap ()    ()
-" inoremap [     []<Left>
-" inoremap [<CR> [<CR>]<Esc>O
-" inoremap []    []
-" }}}
-
-" Slippery Snippet{{{
-"     filetype on
-"     filetype plugin on
-"     set runtimepath+=~/.vim/textmateOnly
-"     set runtimepath+=~/.vim/textmateOnly/after
-"     let g:snip_start_tag="≮" .. special char in dig !<
-"     let g:snip_end_tag="≯" .. special char in dig !>
-" }}}
-
-" Supertab Setting {{{
-" Supertab now can support two differnt mappings
-" let g:SuperTabDefaultCompletionType = "context"
-" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 " }}}
 
 " Easymotion {{{
@@ -145,16 +110,11 @@ command! -nargs=1 HT :tab help <args>
 
 " SUDO can help me save files when permission is not granted
 command! SUDO w !sudo tee % > /dev/null
-
 command! -nargs=0 WriteWrite :w
 cnoreabbrev ww WriteWrite
 " }}}
 
 " EJ autocmd{{{
-" autocmd BufNewFile *.cpp call append(0,["#include <iostream>","using namespace std;","int main() {","","\<TAB>return 0;","}"])
-" autocmd BufNewFile *.c                 call append(0,["#include <stdio.h>","int main() {","\<TAB>","\<TAB>return 0;","}"])
-" autocmd BufNewFile *.php call append(0,["<?php","","?>"])
-" au BufRead,BufNewFile *.scss set filetype=scss sw=2 ts=2 sts=2
 au BufRead,BufNewFile *.less set ft=less
 au BufRead,BufNewFile *.twig set ft=htmldjango
 au BufRead,BufNewFile *.ejs set ft=html
@@ -162,8 +122,6 @@ au BufRead,BufNewFile *.coffee set shiftwidth=2 softtabstop=2 tabstop=2
 au Bufread,BufNewFile *.js.es6 set ft=javascript
 au Bufread,BufNewFile *.md set ft=markdown
 au BufRead,BufNewFile * :IndentGuidesEnable
-" au BufWritePost,FileWritePost *.js :JSHint
-" au BufWritePost,FileWritePost *.coffee :CoffeeLint | cwindow
 " }}}
 
 " perl tt syntax {{{
@@ -209,13 +167,6 @@ set noignorecase " Need this to work with easy-motion
 set wildmode=longest,list
 " }}}
 
-" TlistOption
-" let Tlist_Auto_Open = 1
-
-" coffeescript additionl setting {{{
-" au! Filetype coffee :set sw=2 ts=2 sts=2
-" }}}
-
 " NerdTree settings {{{
 let g:nerdtree_tabs_open_on_gui_startup=0
 let g:nerdtree_tabs_open_on_new_tab=0
@@ -223,24 +174,6 @@ let g:nerdtree_tabs_open_on_new_tab=0
 
 " airline settings {{{
 set laststatus=2
-" }}}
-
-" function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-"  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-"  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-" endfunction
-" 
-" call NERDTreeHighlightFile('jade', 'green', 'none', 'yellow', '#151515')
-" call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-" call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-" call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-" call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-" call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-" call NERDTreeHighlightFile('styl', 'cyan', 'none', 'yellow', '#151515')
-" call NERDTreeHighlightFile('css', 'cyan', 'none', 'yellow', '#151515')
-" call NERDTreeHighlightFile('coffee', 'Red', 'none', 'yellow', '#151515')
-" call NERDTreeHighlightFile('js', 'Red', 'none', 'yellow', '#151515')
-" call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 " }}}
 
 " YCM settings {{{
@@ -274,19 +207,9 @@ let g:fuf_coveragefile_exclude = '\v\~$|(^|[/\\])(bower_componenets|b2g|build_st
 let g:agprg = "ag --column -i"
 " }}}
 
-" Personnal fold{{{
-" function! JavaScriptFold()
-"     setl foldmethod=syntax
-"     setl foldlevelstart=1
-"     syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-"
-"     function! FoldText()
-"         return substitute(getline(v:foldstart), '{.*', '{...}', '')
-"     endfunction
-"     setl foldtext=FoldText()
-" endfunction
-" au FileType javascript call JavaScriptFold()
-" au FileType javascript setl fen
+" vim-vue settings {{{
+let g:vue_disable_pre_processors=1
+autocmd FileType vue syntax sync fromstart
 " }}}
 
 if ! has('gui')
@@ -319,24 +242,3 @@ else
     hi Folded guifg=white guibg=#222222
     hi colorcolumn guibg=#66B3FF
 endif
-
-" deprecated {{{
-
-" function! TAB()
-"     set et sts=4 st=4 ts=4
-" endfunction
-"
-" fun! Retab()
-"     set list
-"     set listchars=tab:>-,eol:$
-"     set noexpandtab
-"     retab!
-"     set sw=4
-"     set tabstop=4
-"     set softtabstop=4
-"     set expandtab
-"     retab!
-" endf
-" com! Retab4 :cal Retab()
-
-" }}}
