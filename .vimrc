@@ -143,6 +143,7 @@ set pastetoggle=<C-k> "<C-i> will conflict with <Tab> in insert mode
 set cindent
 set smartindent
 set autoindent
+set noswapfile
 
 " Tab settings
 set expandtab " 強制把 tab 轉為 空白
